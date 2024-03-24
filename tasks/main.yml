@@ -1,0 +1,9 @@
+---
+# from: https://askubuntu.com/questions/1367139/apt-get-upgrade-auto-restart-services/1421221#1421221
+
+- name: Disable Interactive Restart
+  ansible.builtin.lineinfile:
+    path: /etc/needrestart/needrestart.conf
+    regexp: "^#\\$nrconf\\{restart\\}"
+    line: "$nrconf{restart} = 'a';"
+  become: true
